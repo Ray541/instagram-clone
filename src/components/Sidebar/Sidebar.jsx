@@ -33,6 +33,7 @@ const Sidebar = () => {
     {
       icon: <Avatar size={"sm"} src="" />,
       text: "Profile",
+      link: "/ProfilePage",
     },
   ];
 
@@ -83,7 +84,7 @@ const Sidebar = () => {
                 <Link
                   display={"flex"}
                   as={RouterLink}
-                  to={" "}
+                  to={item.link}
                   alignItems={"center"}
                   justifyContent={{ base: "center", md: "start" }}
                   gap={5}
