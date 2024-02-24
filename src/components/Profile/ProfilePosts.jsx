@@ -28,10 +28,14 @@ const ProfilePosts = ({ username }) => {
             </VStack>
           </>
         ))}
-      <ProfilePost username={username} img="img1.png" />
-      <ProfilePost username={username} img="img2.png" />
-      <ProfilePost username={username} img="img3.png" />
-      <ProfilePost username={username} img="img4.png" />
+      {!isLoading && (
+        <>
+          <ProfilePost username={username} img="img1.png" />
+          <ProfilePost username={username} img="img2.png" />
+          <ProfilePost username={username} img="img3.png" />
+          <ProfilePost username={username} img="img4.png" />
+        </>
+      )}
     </Grid>
   );
 };

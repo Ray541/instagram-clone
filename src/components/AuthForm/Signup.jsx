@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
-  Alert,
-  AlertIcon,
+  // Alert,
+  // AlertIcon,
   Button,
   Input,
   InputGroup,
@@ -20,7 +20,7 @@ const Signup = () => {
 
   const [showPassowrd, setShowPassowrd] = useState(false);
 
-  const { loading, error, signup } = useSignUpWithEmailAndPassowrd();
+  const { loading, signup } = useSignUpWithEmailAndPassowrd();
 
   return (
     <>
@@ -72,12 +72,12 @@ const Signup = () => {
         </InputRightElement>
       </InputGroup>
 
-      {error && (
+      {/* {error ? (
         <Alert status="error" fontSize={15} p={2} borderRadius={5}>
           <AlertIcon fontSize={13} />
           {error.message}
         </Alert>
-      )}
+      ) : null} */}
 
       <Button
         colorScheme="
