@@ -41,6 +41,15 @@ const useSignUpWithEmailAndPassowrd = () => {
       return;
     }
 
+    const eq = query(usersRef, where("email", "==", inputs.email));
+
+    const emailquerySnapshot = await getDocs(eq);
+
+    if (!emailquerySnapshot.empty) {
+      showToast("Error", "Email already exists", "error");
+      return;
+    }
+
     try {
       const newUser = await createUserWithEmailAndPassword(
         inputs.email,
@@ -60,7 +69,7 @@ const useSignUpWithEmailAndPassowrd = () => {
           fullName: inputs.fullName,
           bio: "",
           profilePicURL: "",
-          folowers: [],
+          followers: [],
           following: [],
           posts: [],
           createAt: Date.now(),

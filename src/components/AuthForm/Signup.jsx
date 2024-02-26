@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
-  // Alert,
-  // AlertIcon,
+  Alert,
+  AlertIcon,
   Button,
   Input,
   InputGroup,
@@ -20,7 +20,7 @@ const Signup = () => {
 
   const [showPassowrd, setShowPassowrd] = useState(false);
 
-  const { loading, signup } = useSignUpWithEmailAndPassowrd();
+  const { loading, error, signup } = useSignUpWithEmailAndPassowrd();
 
   return (
     <>
@@ -28,7 +28,7 @@ const Signup = () => {
         value={inputs.email}
         onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
         placeholder="Email"
-        _placeholder={{ color: "purple.100" }}
+        _placeholder={{ color: "whiteAlpha.500" }}
         fontSize={15}
         size={"sm"}
         type="email"
@@ -37,7 +37,7 @@ const Signup = () => {
         value={inputs.username}
         onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
         placeholder="Username"
-        _placeholder={{ color: "purple.100" }}
+        _placeholder={{ color: "whiteAlpha.500" }}
         fontSize={15}
         size={"sm"}
         type="text"
@@ -46,7 +46,7 @@ const Signup = () => {
         value={inputs.fullName}
         onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
         placeholder="Full Name"
-        _placeholder={{ color: "purple.100" }}
+        _placeholder={{ color: "whiteAlpha.500" }}
         fontSize={15}
         size={"sm"}
         type="text"
@@ -55,8 +55,8 @@ const Signup = () => {
         <Input
           value={inputs.password}
           onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-          placeholder="Password"
-          _placeholder={{ color: "purple.100" }}
+          placeholder="Password atleast 6 characters"
+          _placeholder={{ color: "whiteAlpha.500" }}
           fontSize={15}
           size={"sm"}
           type={showPassowrd ? "text" : "password"}
@@ -72,12 +72,13 @@ const Signup = () => {
         </InputRightElement>
       </InputGroup>
 
-      {/* {error ? (
+      {error ? (
         <Alert status="error" fontSize={15} p={2} borderRadius={5}>
           <AlertIcon fontSize={13} />
-          {error.message}
+          {console.log(error)}
+          {error}
         </Alert>
-      ) : null} */}
+      ) : null}
 
       <Button
         colorScheme="

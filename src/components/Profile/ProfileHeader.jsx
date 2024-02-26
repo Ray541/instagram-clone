@@ -5,76 +5,120 @@ import {
   VStack,
   Text,
   Button,
+  useDisclosure,
 } from "@chakra-ui/react";
+import EditProfile from "./EditProfile";
+import useUserProfileStore from "../../store/userProfileStore";
+import useAuthStore from "../../store/authStore";
 
 const ProfileHeader = () => {
+  const { userProfile } = useUserProfileStore();
+  const authUser = useAuthStore((state) => state.user);
+  const visitingOwnProfileAndAuth =
+    authUser && authUser.username === userProfile.username;
+
+  const visitingAnotherProfileAndAuth =
+    authUser && authUser.username !== userProfile.username;
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Flex
-      gap={{ base: 4, sm: 10 }}
-      py={10}
-      direction={{ base: "column", sm: "row" }}
-    >
-      <AvatarGroup
-        size={{ base: "xl", md: "2xl" }}
-        justifySelf={"center"}
-        alignSelf={"flex-start"}
-        mx={"auto"}
+    <>
+      <Flex
+        gap={{ base: 4, sm: 10 }}
+        py={10}
+        direction={{ base: "column", sm: "row" }}
       >
-        <Avatar name="Ray" src="/img1.png" alt="Ray" />
-      </AvatarGroup>
-      <VStack alignItems={"start"} gap={2} mx={"auto"} flex={1}>
-        <Flex
-          gap={5}
-          direction={{ base: "column", sm: "row" }}
-          justifyContent={{ base: "center", sm: "flex-start" }}
-          alignItems={"center"}
-          w={"full"}
+        <AvatarGroup
+          size={{ base: "xl", md: "2xl" }}
+          justifySelf={"center"}
+          alignSelf={"flex-start"}
+          mx={"auto"}
         >
-          <Text fontSize={{ base: "small", md: "large" }}>Ray</Text>
-          <Flex alignItems={"center"} justifyContent={"center"} gap={2}>
-            <Button
-              color={"purple.300"}
-              _hover={{ bg: "whiteAlpha.500" }}
-              size={{ base: "xs", md: "sm" }}
-            >
-              Edit Profile
-            </Button>
+          <Avatar src={userProfile.profilePicURL} alt={userProfile.username} />
+        </AvatarGroup>
+        <VStack alignItems={"start"} gap={2} mx={"auto"} flex={1}>
+          <Flex
+            gap={5}
+            direction={{ base: "column", sm: "row" }}
+            justifyContent={{ base: "center", sm: "flex-start" }}
+            alignItems={"center"}
+            w={"full"}
+          >
+            <Text fontSize={{ base: "small", md: "large" }}>
+              {userProfile.username}
+            </Text>
+            {visitingOwnProfileAndAuth && (
+              <Flex alignItems={"center"} justifyContent={"center"} gap={2}>
+                <Button
+                  color={"black"}
+                  bg={"white"}
+                  _hover={{
+                    bg: "whiteAlpha.700",
+                    color: "purple.500",
+                    textShadow: "1px solid black",
+                  }}
+                  size={{ base: "xs", md: "sm" }}
+                  onClick={onOpen}
+                >
+                  Edit Profile
+                </Button>
+              </Flex>
+            )}
+            {visitingAnotherProfileAndAuth && (
+              <Flex alignItems={"center"} justifyContent={"center"} gap={2}>
+                <Button
+                  color={"black"}
+                  bg={"white"}
+                  _hover={{
+                    bg: "whiteAlpha.700",
+                    color: "purple.500",
+                    textShadow: "1px solid black",
+                  }}
+                  size={{ base: "xs", md: "sm" }}
+                >
+                  Follow
+                </Button>
+              </Flex>
+            )}
           </Flex>
-        </Flex>
 
-        <Flex
-          alignItems={"center"}
-          justifyContent={"center"}
-          gap={{ base: 2, sm: 4 }}
-        >
-          <Text>
-            <Text as="span" fontWeight={"bold"} mr={1}>
-              4
+          <Flex
+            alignItems={"center"}
+            justifyContent={"center"}
+            gap={{ base: 2, sm: 4 }}
+          >
+            <Text>
+              <Text as="span" fontWeight={"bold"} mr={1}>
+                {userProfile.posts.length}
+              </Text>
+              Posts
             </Text>
-            Posts
-          </Text>
-          <Text>
-            <Text as="span" fontWeight={"bold"} mr={1}>
-              149
+            <Text>
+              <Text as="span" fontWeight={"bold"} mr={1}>
+                {userProfile.followers.length}
+              </Text>
+              Followers
             </Text>
-            Followers
-          </Text>
-          <Text>
-            <Text as="span" fontWeight={"bold"} mr={1}>
-              136
+            <Text>
+              <Text as="span" fontWeight={"bold"} mr={1}>
+                {userProfile.following.length}
+              </Text>
+              Following
             </Text>
-            Following
-          </Text>
-        </Flex>
+          </Flex>
 
-        <Flex alignItems={"center"} justifyContent={"flex-start"}>
-          <Text fontSize={"sm"} fontWeight={"bold"}>
-            Ray username
+          <Flex alignItems={"center"} justifyContent={"flex-start"}>
+            <Text fontSize={"sm"} fontWeight={"bold"}>
+              {userProfile.username}
+            </Text>
+          </Flex>
+          <Text fontWeight={"bold"} fontSize={15}>
+            {userProfile.bio}
           </Text>
-        </Flex>
-        <Text fontWeight={"bold"}>Ray&apos;s Bio</Text>
-      </VStack>
-    </Flex>
+        </VStack>
+      </Flex>
+      <Flex>{isOpen && <EditProfile isOpen={isOpen} onClose={onClose} />}</Flex>
+    </>
   );
 };
 

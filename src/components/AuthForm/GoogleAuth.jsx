@@ -41,7 +41,7 @@ const GoogleAuth = ({ prefix }) => {
             fullName: newUser.user.displayName,
             bio: "",
             profilePicURL: newUser.user.photoURL,
-            folowers: [],
+            followers: [],
             following: [],
             posts: [],
             createAt: Date.now(),

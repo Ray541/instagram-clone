@@ -14,6 +14,7 @@ const useLogin = () => {
     if (!inputs.email || !inputs.password) {
       return showToast("Error", "Please fill all the fields", "error");
     }
+
     try {
       const userCred = await signInWithEmailAndPassword(
         inputs.email,
@@ -27,10 +28,8 @@ const useLogin = () => {
         loginUser(docSnap.data());
       }
     } catch (error) {
-      showToast("Error", error.message, "error");
       console.log(error.message);
-    } finally {
-      showToast("Success", "Logged In", "success");
+      showToast("Error", error.errors.message, "error");
     }
   };
 
