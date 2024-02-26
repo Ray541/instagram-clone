@@ -36,7 +36,7 @@ const Sidebar = () => {
     {
       icon: <Avatar size={"sm"} src="" />,
       text: "Profile",
-      link: `${authUser.username}`,
+      link: `${authUser ? `${authUser.username}` : "/auth"}`,
     },
   ];
 
