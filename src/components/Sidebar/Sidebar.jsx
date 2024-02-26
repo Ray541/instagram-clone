@@ -1,4 +1,3 @@
-// import React from 'react'
 import { Tooltip, Avatar, Box, Flex, Link, Button } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -11,8 +10,11 @@ import {
 import { AiFillHome } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import useLogout from "../../hooks/useLogout";
+import useAuthStore from "../../store/authStore";
 
 const Sidebar = () => {
+  const authUser = useAuthStore((state) => state.user);
+
   const sideBarItems = [
     {
       icon: <AiFillHome size={25} color="#F5F5F5" />,
@@ -34,11 +36,11 @@ const Sidebar = () => {
     {
       icon: <Avatar size={"sm"} src="" />,
       text: "Profile",
-      link: "/ProfilePage",
+      link: `${authUser.username}`,
     },
   ];
 
-  const { handleLogout, isLoggingOut } = useLogout();
+  const { handleLogout, loading } = useLogout();
 
   return (
     <>
@@ -135,7 +137,8 @@ const Sidebar = () => {
                 display={{ base: "none", md: "block" }}
                 variant={"ghost"}
                 _hover={{ bg: "transparent" }}
-                isLoading={isLoggingOut}
+                isLoading={loading}
+                onClick={handleLogout}
               >
                 Log Out
               </Button>
