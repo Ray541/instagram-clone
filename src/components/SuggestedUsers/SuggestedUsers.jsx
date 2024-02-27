@@ -1,39 +1,35 @@
 import { Box, Flex, Text, VStack, Link } from "@chakra-ui/react";
 import SuggestedHeader from "./SuggestedHeader";
 import SuggestedUser from "./SuggestedUser";
+import useGetSuggestedUsers from "../../hooks/useGetSuggestedUsers";
 const SuggestedUsers = () => {
+  const { isLoading, suggestedUsers } = useGetSuggestedUsers();
+
+  if (isLoading) return null;
   return (
     <VStack py={8} px={6} gap={5}>
       <SuggestedHeader />
-      <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
-        <Text fontSize={13} fontWeight={"bold"} color={"white"}>
-          Suggested for you
-        </Text>
-        <Text
-          fontSize={13}
-          fontWeight={"bold"}
-          color={"gray"}
-          _hover={{ color: "white" }}
-          cursor={"pointer"}
-        >
-          See All
-        </Text>
-      </Flex>
-      <SuggestedUser
-        name="Den Abramov"
-        followers={"554"}
-        avatar={"https://bit.ly/den-abramov"}
-      />
-      <SuggestedUser
-        name="Ryan Florence"
-        followers={"672"}
-        avatar={"https://bit.ly/den-abramov"}
-      />
-      <SuggestedUser
-        name="Christian Nwamba"
-        followers={"479"}
-        avatar={"https://bit.ly/den-abramov"}
-      />
+
+      {suggestedUsers.length !== 0 && (
+        <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
+          <Text fontSize={13} fontWeight={"bold"} color={"white"}>
+            Suggested for you
+          </Text>
+          <Text
+            fontSize={13}
+            fontWeight={"bold"}
+            color={"gray"}
+            _hover={{ color: "white" }}
+            cursor={"pointer"}
+          >
+            See All
+          </Text>
+        </Flex>
+      )}
+
+      {suggestedUsers.map((user) => (
+        <SuggestedUser user={user} key={user.id} />
+      ))}
 
       <Box fontSize={15} color={"white"} mt={5} alignSelf={"flex-start"}>
         &copy; Built By{" "}

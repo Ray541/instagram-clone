@@ -32,17 +32,18 @@ const useFollowAndUnFollowUser = (userId) => {
 
       if (isFollowing) {
         //unfollow
-
         setAuthUser({
           ...authUser,
           following: authUser.following.filter((uid) => uid !== userId),
         });
-        setUserProfile({
-          ...userProfile,
-          followers: userProfile.followers.filter(
-            (uid) => uid !== authUser.uid
-          ),
-        });
+        if (userProfile) {
+          setUserProfile({
+            ...userProfile,
+            followers: userProfile.followers.filter(
+              (uid) => uid !== authUser.uid
+            ),
+          });
+        }
 
         localStorage.setItem(
           "user-info",
@@ -54,15 +55,16 @@ const useFollowAndUnFollowUser = (userId) => {
         setIsFollowing(false);
       } else {
         //follow
-
         setAuthUser({
           ...authUser,
           following: [...authUser.following, userId],
         });
-        setUserProfile({
-          ...userProfile,
-          followers: [...userProfile.followers, authUser.uid],
-        });
+        if (userProfile) {
+          setUserProfile({
+            ...userProfile,
+            followers: [...userProfile.followers, authUser.uid],
+          });
+        }
 
         localStorage.setItem(
           "user-info",
@@ -91,3 +93,5 @@ const useFollowAndUnFollowUser = (userId) => {
 };
 
 export default useFollowAndUnFollowUser;
+
+// SuggestedUser.jsx:12 Uncaught (in promise) TypeError: setUser is not a function
