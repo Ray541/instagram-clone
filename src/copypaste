@@ -1,0 +1,1 @@
+${authUser ? `${authUser.username}` : "/auth"} in sidebar for profile nav link
