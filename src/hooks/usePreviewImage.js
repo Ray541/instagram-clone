@@ -18,6 +18,7 @@ const usePreviewImg = () => {
 
       reader.onloadend = () => {
         setSelectedFile(reader.result);
+        e.target.value = "";
       };
 
       reader.readAsDataURL(file);
