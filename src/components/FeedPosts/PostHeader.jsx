@@ -1,6 +1,7 @@
 import { Avatar, Box, Flex, SkeletonCircle, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import useFollowAndUnFollowUser from "../../hooks/useFollowAndUnFollowUser";
+import { timeAgo } from "../../utils/timeAgo";
 
 const PostHeader = ({ post, creatorProfile }) => {
   const { isUpdating, isFollowing, handleFollowUser } =
@@ -30,7 +31,7 @@ const PostHeader = ({ post, creatorProfile }) => {
             <SkeletonCircle width={"100px"} h={"10px"} />
           )}
 
-          <Box color={"gray.500"}>• 1w</Box>
+          <Box color={"gray.500"}>• {timeAgo(post.createdAt)}</Box>
         </Flex>
       </Flex>
       <Box>

@@ -83,9 +83,14 @@ const CreatePost = () => {
       </Tooltip>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
-        <ModalOverlay />
+        <ModalOverlay w={"full"} h={"full"} />
 
-        <ModalContent bg={"black"} border={"1px solid gray"}>
+        <ModalContent
+          style={{ width: "100%" }}
+          m={"auto"}
+          bg={"black"}
+          border={"1px solid gray"}
+        >
           <ModalHeader>Create Post</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>

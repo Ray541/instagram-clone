@@ -48,7 +48,7 @@ const EditProfile = ({ isOpen, onClose }) => {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay w={"full"} h={"full"} />
+        <ModalOverlay w={"full"} h={"full"} onClick={onClose} />
         <ModalContent
           bg={"black"}
           boxShadow={"xl"}
@@ -56,7 +56,7 @@ const EditProfile = ({ isOpen, onClose }) => {
           mx={3}
         >
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody w={"full"} h={"full"}>
             {/* Container Flex */}
             <Flex bg={"black"}>
               <Stack

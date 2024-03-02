@@ -23,7 +23,7 @@ const ProfilePage = () => {
 
   return (
     <Container maxW={"container.lg"} py={5}>
-      <Flex py={5} px={5} w={"full"} mx={"auto"} flexDirection={"column"}>
+      <Flex py={5} px={5} mx={"auto"} flexDirection={"column"}>
         {!isLoading && userProfile && <ProfileHeader />}
         {isLoading && <ProfileHeaderSkeleton />}
       </Flex>
