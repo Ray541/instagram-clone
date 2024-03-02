@@ -173,7 +173,7 @@ function useCreatePost() {
 
     try {
       const postDocRef = await addDoc(collection(firestore, "posts"), newPost);
-      const userDocRef = doc(firestore, "users", authUser.uid);
+      const userDocRef = doc(firestore, "users", authUser?.uid);
       const imageRef = ref(storage, `posts/${postDocRef.id}`);
 
       await updateDoc(userDocRef, { posts: arrayUnion(postDocRef.id) });
@@ -193,6 +193,7 @@ function useCreatePost() {
       showToast("Success", "Post created successfully", "success");
     } catch (error) {
       showToast("Error", error.message, "error");
+      console.log(error.message);
     } finally {
       setIsLoading(false);
     }

@@ -25,7 +25,7 @@ const useFollowAndUnFollowUser = (userId) => {
       });
 
       await updateDoc(userToFollowOrUnfollow, {
-        following: isFollowing
+        followers: isFollowing
           ? arrayRemove(authUser.uid)
           : arrayUnion(authUser.uid),
       });
@@ -95,3 +95,5 @@ const useFollowAndUnFollowUser = (userId) => {
 export default useFollowAndUnFollowUser;
 
 // SuggestedUser.jsx:12 Uncaught (in promise) TypeError: setUser is not a function
+// SuggestedUser.jsx:12 Uncaught (in promise) TypeError: setUser is not a function
+//     at onFollowUser
