@@ -55,7 +55,9 @@ const EditProfile = ({ isOpen, onClose }) => {
           border={"1px solid gray"}
           mx={3}
         >
-          <ModalCloseButton />
+          <ModalCloseButton
+            _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
+          />
           <ModalBody w={"full"} h={"full"}>
             {/* Container Flex */}
             <Flex bg={"black"}>
@@ -87,6 +89,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                         _hover={{
                           bg: "whiteAlpha.400",
                         }}
+                        _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
                         onClick={() => fileRef.current.click()}
                       >
                         Edit Profile Picture
@@ -115,6 +118,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                         fullName: value,
                       }));
                     }}
+                    _focus={{ border: "1px solid white", boxShadow: "unset" }}
                   />
                 </FormControl>
 
@@ -125,6 +129,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                     size={"sm"}
                     type={"text"}
                     defaultValue={inputs.username || authUser.username}
+                    _focus={{ border: "1px solid white", boxShadow: "unset" }}
                     onChange={(e) => {
                       const value = e.target.value;
                       setInputs((prevInputs) => ({
@@ -142,6 +147,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                     size={"sm"}
                     type={"text"}
                     defaultValue={inputs.bio || authUser.bio}
+                    _focus={{ border: "1px solid white", boxShadow: "unset" }}
                     onChange={(e) => {
                       const value = e.target.value;
                       setInputs((prevInputs) => ({

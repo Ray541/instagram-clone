@@ -99,18 +99,25 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
                   p={2}
                   name="comment"
                   placeholder="Add a Comment..."
+                  _placeholder={{ color: "whiteAlpha.800" }}
                   fontSize={"sm"}
                   onChange={(e) => setComment(e.target.value)}
                   value={comment}
                   ref={commentRef}
+                  autoComplete="off"
                 />
                 <Button
                   ml={1}
                   cursor={"pointer"}
                   color={"white"}
-                  bg={"whiteAlpha.300"}
-                  _hover={{ color: "purple.300" }}
-                  transition={"all .1s ease"}
+                  bg={"whiteAlpha.200"}
+                  _hover={{ color: "purple.300", bg: "whiteAlpha.300" }}
+                  _focus={{
+                    boxShadow: "unset",
+                    color: "purple.300",
+                    bg: "whiteAlpha.300",
+                  }}
+                  transition={"all .2s ease"}
                   onClickCapture={handleSubmitComment}
                   isLoading={isCommenting}
                 >

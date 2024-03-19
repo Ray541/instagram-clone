@@ -36,8 +36,12 @@ const SuggestedUsers = () => {
         <Link
           href="https://github.com/Ray541"
           target="_blank"
-          color={"purple.100"}
+          color={"purple.200"}
           _hover={{ color: "purple.300" }}
+          _focus={{
+            boxShadow: "unset",
+            color: "purple.300",
+          }}
           transition={"all .1s ease"}
         >
           | Pranav Rao |

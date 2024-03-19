@@ -69,6 +69,7 @@ const CreatePost = () => {
           alignItems={"center"}
           gap={5}
           _hover={{ bg: "whiteAlpha.400" }}
+          _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
           borderRadius={5}
           p={2}
           w={{ base: 10, md: "full" }}
@@ -92,12 +93,15 @@ const CreatePost = () => {
           border={"1px solid gray"}
         >
           <ModalHeader>Create Post</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton
+            _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
+          />
           <ModalBody pb={6}>
             <Textarea
               placeholder="Post caption..."
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
+              _focus={{ boxShadow: "unset", border: "2px solid white" }}
             />
             <Input
               type="file"
@@ -111,6 +115,7 @@ const CreatePost = () => {
                 fontSize={15}
                 onClick={() => imageRef.current.click()}
                 cursor={"pointer"}
+                _focus={{ boxShadow: "unset", bg: "whiteAlpha.300" }}
               >
                 Select Photo{" "}
                 <BsFillImageFill
@@ -143,7 +148,12 @@ const CreatePost = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button mr={3} onClick={handlePostCreation} isLoading={isLoading}>
+            <Button
+              mr={3}
+              onClick={handlePostCreation}
+              isLoading={isLoading}
+              _focus={{ boxShadow: "unset", bg: "whiteAlpha.300" }}
+            >
               Post
             </Button>
           </ModalFooter>

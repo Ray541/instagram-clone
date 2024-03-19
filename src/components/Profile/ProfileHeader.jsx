@@ -61,6 +61,12 @@ const ProfileHeader = () => {
                     color: "purple.500",
                     textShadow: "1px solid black",
                   }}
+                  _focus={{
+                    boxShadow: "unset",
+                    bg: "whiteAlpha.700",
+                    color: "purple.500",
+                    textShadow: "1px solid black",
+                  }}
                   size={{ base: "xs", md: "sm" }}
                   onClick={onOpen}
                 >

@@ -40,7 +40,9 @@ const CommentsModal = ({ isOpen, onClose, post }) => {
       <ModalOverlay />
       <ModalContent bg={"black"} border={"1px solid gray"} maxW={"400px"}>
         <ModalHeader>Comments</ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton
+          _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
+        />
         <ModalBody pb={6}>
           <Flex
             mb={4}
@@ -55,7 +57,12 @@ const CommentsModal = ({ isOpen, onClose, post }) => {
             ))}
           </Flex>
           <form style={{ marginTop: "2rem" }} onSubmit={handleSubmitComment}>
-            <Input placeholder="Comment" size={"sm"} ref={commentRef} />
+            <Input
+              placeholder="Comment"
+              size={"sm"}
+              ref={commentRef}
+              _focus={{ boxShadow: "unset", border: "1px solid white" }}
+            />
             <Flex w={"full"} justifyContent={"flex-end"}>
               <Button
                 type="submit"
@@ -63,6 +70,7 @@ const CommentsModal = ({ isOpen, onClose, post }) => {
                 size={"sm"}
                 my={4}
                 isLoading={isCommenting}
+                _focus={{ boxShadow: "unset", bg: "whiteAlpha.300" }}
               >
                 Post
               </Button>

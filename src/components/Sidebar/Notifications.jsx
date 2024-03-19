@@ -15,13 +15,16 @@ const Notifications = () => {
         alignItems={"center"}
         gap={5}
         _hover={{ bg: "whiteAlpha.400" }}
+        _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
         borderRadius={5}
         p={2}
         w={{ base: 10, md: "full" }}
         justifyContent={{ base: "center", md: "flex-start" }}
       >
         <NotificationsLogo />
-        <Box color={"white"} display={{ base: "none", md: "block" }}>Notifications</Box>
+        <Box color={"white"} display={{ base: "none", md: "block" }}>
+          Notifications
+        </Box>
       </Flex>
     </Tooltip>
   );

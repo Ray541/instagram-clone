@@ -21,9 +21,9 @@ const AuthForm = () => {
             gap={5}
             my={"1.5"}
           >
-            <Box flex={1} h={"1px"} bg={"purple.100"} />
+            <Box flex={1} h={"1px"} bg={"purple.300"} />
             <Text color={"white"}>OR</Text>
-            <Box flex={1} h={"1px"} bg={"purple.100"} />
+            <Box flex={1} h={"1px"} bg={"purple.300"} />
           </Flex>
 
           <GoogleAuth prefix={isLogin ? "Log in" : "Sign up"} />

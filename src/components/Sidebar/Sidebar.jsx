@@ -27,7 +27,13 @@ const Sidebar = () => {
           w={"full"}
           h={"full"}
         >
-          <Link as={RouterLink} to="/" display={{ base: "none", md: "block" }}>
+          <Link
+            as={RouterLink}
+            to="/"
+            display={{ base: "none", md: "block" }}
+            _focus={{ boxShadow: "unset" }}
+            _hover={{ boxShadow: "unset" }}
+          >
             <InstagramLogo />
           </Link>
           <Link
@@ -63,6 +69,7 @@ const Sidebar = () => {
               borderRadius={5}
               w={"full"}
               _hover={{ bg: "whiteAlpha.400" }}
+              _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
               mt={"auto"}
             >
               <BiLogOut size={25} color="#F5F5F5" />
@@ -70,6 +77,7 @@ const Sidebar = () => {
                 display={{ base: "none", md: "block" }}
                 variant={"ghost"}
                 _hover={{ bg: "transparent" }}
+                _focus={{ boxShadow: "unset", bg: "transparent" }}
                 isLoading={loading}
                 onClick={handleLogout}
               >

@@ -20,6 +20,7 @@ const Login = () => {
         fontSize={15}
         size={"sm"}
         type="email"
+        _focus={{ boxShadow: "unset", border: "1px solid white" }}
       />
       <Input
         value={inputs.password}
@@ -29,6 +30,7 @@ const Login = () => {
         fontSize={15}
         size={"sm"}
         type="password"
+        _focus={{ boxShadow: "unset", border: "1px solid white" }}
       />
 
       {error ? (
@@ -45,6 +47,7 @@ const Login = () => {
         w={"full"}
         isLoading={loading}
         onClick={() => login(inputs)}
+        _focus={{ boxShadow: "unset", bg: "purple.300" }}
       >
         Log In
       </Button>

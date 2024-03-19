@@ -1,5 +1,12 @@
-import { Avatar, Box, Flex, SkeletonCircle, Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import {
+  Avatar,
+  Box,
+  Flex,
+  SkeletonCircle,
+  Button,
+  Link,
+} from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import useFollowAndUnFollowUser from "../../hooks/useFollowAndUnFollowUser";
 import { timeAgo } from "../../utils/timeAgo";
 
@@ -15,7 +22,13 @@ const PostHeader = ({ post, creatorProfile }) => {
     >
       <Flex alignItems={"center"} gap={2}>
         {creatorProfile ? (
-          <Link to={`/${creatorProfile.username}`}>
+          <Link
+            as={RouterLink}
+            to={`/${creatorProfile.username}`}
+            transition={"all .2s ease"}
+            _hover={{ transform: "scale(1.025)" }}
+            _focus={{ boxShadow: "unset", transform: "scale(1.05)" }}
+          >
             <Avatar src={creatorProfile.profilePicURL} alt="User Profile Pic" />
           </Link>
         ) : (
@@ -24,7 +37,12 @@ const PostHeader = ({ post, creatorProfile }) => {
 
         <Flex fontSize={12} fontWeight={"bold"} gap={2}>
           {creatorProfile ? (
-            <Link to={`/${creatorProfile.username}`}>
+            <Link
+              as={RouterLink}
+              to={`/${creatorProfile.username}`}
+              _hover={{ color: "whiteAlpha.600" }}
+              _focus={{ boxShadow: "unset", color: "whiteAlpha.600" }}
+            >
               {creatorProfile.username}
             </Link>
           ) : (
@@ -36,15 +54,16 @@ const PostHeader = ({ post, creatorProfile }) => {
       </Flex>
       <Box>
         <Button
-          size={"xs"}
+          // size={"xs"}
           bg={"transparent"}
-          fontSize={12}
+          fontSize={14}
           color={"purple.500"}
           cursor={"pointer"}
-          p={"1.5"}
-          borderRadius={5}
+          p={3.5}
+          borderRadius={4}
           _hover={{ color: "white", bg: "whiteAlpha.300" }}
-          transition={"all 0.1s ease"}
+          _focus={{ boxShadow: "unset", color: "white", bg: "whiteAlpha.300" }}
+          transition={"all 0.2s ease"}
           onClick={handleFollowUser}
           isLoading={isUpdating}
         >

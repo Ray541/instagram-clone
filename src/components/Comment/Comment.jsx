@@ -1,6 +1,13 @@
-import { Avatar, Flex, Skeleton, SkeletonCircle, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Flex,
+  Skeleton,
+  SkeletonCircle,
+  Text,
+  Link,
+} from "@chakra-ui/react";
 import useGetUserProfileById from "../../hooks/useGetUserProfileById";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { timeAgo } from "../../utils/timeAgo";
 
 const Comment = ({ comment }) => {
@@ -9,20 +16,25 @@ const Comment = ({ comment }) => {
   if (isLoading) return <CommentSkeleton />;
   return (
     <Flex gap={4}>
-      <Link to={`/${userProfile.username}`}>
+      <Link
+        as={RouterLink}
+        to={`/${userProfile.username}`}
+        _focus={{ boxShadow: "unset", transform: "scale(1.025)" }}
+      >
         <Avatar src={userProfile.profilePicURL} size={"sm"} />
       </Link>
       <Flex direction={"column"}>
         <Flex gap={2} alignItems={"center"}>
-          <Link to={`/${userProfile.username}`}>
-            <Text
-              color={"whiteAlpha.800"}
-              _hover={{ color: "grey" }}
-              fontWeight={"bold"}
-              fontSize={12}
-            >
-              {userProfile.username}
-            </Text>
+          <Link
+            as={RouterLink}
+            to={`/${userProfile.username}`}
+            _hover={{ color: "grey" }}
+            _focus={{ boxShadow: "unset", color: "grey" }}
+            color={"whiteAlpha.800"}
+            fontWeight={"bold"}
+            fontSize={12}
+          >
+            {userProfile.username}
           </Link>
           <Text fontSize={13}>{comment.comment}</Text>
         </Flex>

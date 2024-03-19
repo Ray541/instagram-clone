@@ -43,6 +43,7 @@ const Search = () => {
           alignItems={"center"}
           gap={5}
           _hover={{ bg: "whiteAlpha.400" }}
+          _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
           borderRadius={5}
           p={2}
           w={{ base: 10, md: "full" }}
@@ -60,12 +61,18 @@ const Search = () => {
         <ModalOverlay />
         <ModalContent bg={"black"} border={"1px solid gray"} maxW={"400px"}>
           <ModalHeader>Search user</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton
+            _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
+          />
           <ModalBody pb={6}>
             <form onSubmit={handleSearchUser}>
               <FormControl>
                 <FormLabel>Username</FormLabel>
-                <Input placeholder="Search Username" ref={searchRef} />
+                <Input
+                  placeholder="Search Username"
+                  ref={searchRef}
+                  _focus={{ boxShadow: "unset", border: "1px solid white" }}
+                />
               </FormControl>
 
               <Flex w={"full"} justifyContent={"flex-end"}>
@@ -75,6 +82,7 @@ const Search = () => {
                   size={"sm"}
                   my={4}
                   isLoading={isLoading}
+                  _focus={{ boxShadow: "unset", bg: "whiteAlpha.300" }}
                 >
                   Search
                 </Button>

@@ -123,7 +123,9 @@ const ProfilePost = ({ post }) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalCloseButton />
+          <ModalCloseButton
+            _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
+          />
           <ModalBody bg={"black"} pb={5}>
             <Flex
               gap={5}
@@ -167,6 +169,11 @@ const ProfilePost = ({ post }) => {
                       bg={"transparent"}
                       transition={"all .2s ease"}
                       _hover={{ bg: "whiteAlpha.300", color: "red.600" }}
+                      _focus={{
+                        boxShadow: "unset",
+                        bg: "whiteAlpha.400",
+                        color: "red.600",
+                      }}
                       borderRadius={5}
                       p={1}
                       onClick={handleDeletePost}

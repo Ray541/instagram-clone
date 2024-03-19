@@ -32,6 +32,7 @@ const Signup = () => {
         fontSize={15}
         size={"sm"}
         type="email"
+        _focus={{ boxShadow: "unset", border: "1px solid white" }}
       />
       <Input
         value={inputs.username}
@@ -41,6 +42,7 @@ const Signup = () => {
         fontSize={15}
         size={"sm"}
         type="text"
+        _focus={{ boxShadow: "unset", border: "1px solid white" }}
       />
       <Input
         value={inputs.fullName}
@@ -50,6 +52,7 @@ const Signup = () => {
         fontSize={15}
         size={"sm"}
         type="text"
+        _focus={{ boxShadow: "unset", border: "1px solid white" }}
       />
       <InputGroup>
         <Input
@@ -60,12 +63,14 @@ const Signup = () => {
           fontSize={15}
           size={"sm"}
           type={showPassowrd ? "text" : "password"}
+          _focus={{ boxShadow: "unset", border: "1px solid white" }}
         />
         <InputRightElement h={"full"}>
           <Button
             varient={"ghost"}
             size={"sm"}
             onClick={() => setShowPassowrd(!showPassowrd)}
+            _focus={{ boxShadow: "unset", bg: "whiteAlpha.300" }}
           >
             {showPassowrd ? <ViewIcon /> : <ViewOffIcon />}
           </Button>
@@ -87,6 +92,10 @@ const Signup = () => {
         w={"full"}
         isLoading={loading}
         onClick={() => signup(inputs)}
+        _focus={{
+          boxShadow: "unset",
+          bg: "purple.300",
+        }}
       >
         Sign Up
       </Button>

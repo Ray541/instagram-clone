@@ -19,6 +19,7 @@ const Home = () => {
         alignItems={"center"}
         gap={5}
         _hover={{ bg: "whiteAlpha.400" }}
+        _focus={{ boxShadow: "unset", bg: "whiteAlpha.400" }}
         borderRadius={5}
         p={2}
         w={{ base: 10, md: "full" }}
